@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Base\App.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Gamemodes\Arcade\Arcade.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Tiles\Tile.cpp" />
+    <ClCompile Include="Tiles\TileManager.cpp" />
+    <ClCompile Include="Gamemodes\Relay\Relay.cpp" />
+    <ClCompile Include="Gamemodes\Classic\Classic.cpp" />
+    <ClCompile Include="Gamestates\Titlescreen.cpp" />
+    <ClCompile Include="Gamestates\Controls.cpp" />
+    <ClCompile Include="Gamemodes\IGamemode.cpp" />
+    <ClCompile Include="Gamestates\Retry.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\App.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Base\magic_enum.hpp" />
+    <ClInclude Include="Gamemodes\Arcade\Arcade.h" />
+    <ClInclude Include="Tiles\Tile.h" />
+    <ClInclude Include="Tiles\TileManager.h" />
+    <ClInclude Include="Gamemodes\IGamemode.h" />
+    <ClInclude Include="Gamemodes\Relay\Relay.h" />
+    <ClInclude Include="Gamemodes\Classic\Classic.h" />
+    <ClInclude Include="Gamestates\Titlescreen.h" />
+    <ClInclude Include="Gamestates\Controls.h" />
+    <ClInclude Include="Gamestates\Retry.h" />
+  </ItemGroup>
+</Project>
