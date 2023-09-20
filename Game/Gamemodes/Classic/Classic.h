@@ -14,7 +14,7 @@ public:
 
 	static Classic* Get();
 private:
-	inline static Classic* zen = nullptr;
+	inline static Classic* classic = nullptr;
 
 	
 

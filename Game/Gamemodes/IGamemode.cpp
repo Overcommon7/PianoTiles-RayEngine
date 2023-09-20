@@ -50,7 +50,7 @@ void IGamemode::OnUpdate()
 	auto y = Mouse::Position().y;
 	auto it = std::find_if(tiles.begin(), tiles.end(), [width, y](const shared_ptr<Tile>& tile) {
 
-		const Collider* collider = tile.get()->Transform()->GameObject()->GetComponent<Button>()->GetCollider();
+		const Collider* collider = tile.get()->Collider();
 		for (float i = 1; i < width; i += Tile::SIZE.x)
 		{
 			Vector2 point = { i, y };

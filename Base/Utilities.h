@@ -214,6 +214,23 @@ namespace RayEngine
         
     }
 
+    static float InverseLerp(float a, float b, float value) {
+        if (a != b) {
+            return (value - a) / (b - a);
+        }
+ 
+        return 0.0f; 
+    }
+
+    static Color LerpColor(Color a, Color b, float t)
+    {
+        return Color(
+                 std::lerp<unsigned char>(a.r, b.r, t),
+                 std::lerp<unsigned char>(a.g, b.g, t),
+                 std::lerp<unsigned char>(a.b, b.b, t),
+                 std::lerp<unsigned char>(a.a, b.a, t) );
+    }
+
     static string ToString(Vector2 vec, int decimalPlaces = 2)
     {
         return '[' + Format(vec.x, decimalPlaces) + ", " + Format(vec.y, decimalPlaces) + ']';

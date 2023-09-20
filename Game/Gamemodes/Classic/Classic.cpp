@@ -15,10 +15,10 @@ void Classic::Shutdown()
 
 Classic* Classic::Get()
 {
-	if (!zen)
-		zen = new Classic();
+	if (!classic)
+		classic = new Classic();
 
-	return zen;
+	return classic;
 }
 
 void Classic::SetUpRetry()

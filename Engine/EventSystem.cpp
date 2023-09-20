@@ -107,7 +107,7 @@ void RayEngine::EventSystem::Update()
 					currentSelectedGameObject = raycastTargets.back();
 				}
 			}
-			else
+			else if (!raycastTargets.empty())
 			{
 			   raycastTargets.back()->SetSelected(true);
 			}

@@ -43,7 +43,7 @@ void Tile::OnInvoke(GameObject& arg1)
 	auto y = arg1.Transform()->Position().y;
 	DrawLine(0, y, width, y, BLACK);
 
-	if (y < height) return;
+	if (y < height + 5) return;
 
 	if (clicked)
 	{
