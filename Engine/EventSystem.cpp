@@ -28,8 +28,12 @@ const vector<RayEngine::Selectable*>& RayEngine::EventSystem::RaycastAll()
 
 bool RayEngine::EventSystem::Select(Selectable* target)
 {
+
 	if (target)
+	{
+		if (target->GameObject()->SceneID() == sceneID)
 		currentSelectedGameObject = target;
+	}	
 	else currentSelectedGameObject = nullptr;
 	return true;
 }
@@ -43,13 +47,16 @@ bool RayEngine::EventSystem::Hover(Selectable* target)
 	}
 
 	if (!target->IsRayCastTarget())	return false;
+	if (target->GameObject()->SceneID() != sceneID) return false;
 	currentHoveredGameObject = raycastTargets.emplace_back(target);
 	return true;
 }
 
-RayEngine::EventSystem& RayEngine::EventSystem::Get()
+RayEngine::EventSystem* RayEngine::EventSystem::Get(size_t id)
 {
-	return SceneManager::GetCurrentSceneEventSystem();
+	if (id == ULLONG_MAX)
+		return SceneManager::GetCurrentSceneEventSystem();
+	return SceneManager::GetEventSystem(id);
 }
 
 void RayEngine::EventSystem::Update()

@@ -31,6 +31,7 @@ namespace RayEngine
 		inline Delegate1<GameObject>& OnDraw() { return onDraw; }
 		inline Delegate1<GameObject>& OnLateUpdate() { return onLateUpdate; }
 		inline Delegate1<GameObject>& OnLateDraw() { return onLateDraw; }
+		inline Delegate1<GameObject>& OnDestroy() { return onLateDraw; }
 
 		~GameObject()
 		{
@@ -64,6 +65,7 @@ namespace RayEngine
 		Delegate1<GameObject> onDraw;
 		Delegate1<GameObject> onLateUpdate;
 		Delegate1<GameObject> onLateDraw;
+		Delegate1<GameObject> onDestroy;
 
 		GameObject(Vector2 position, const short execultionPriority, const string& name, const size_t id);
 

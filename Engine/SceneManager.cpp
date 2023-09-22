@@ -127,6 +127,15 @@ void RayEngine::SceneManager::SetPriority(GameObject* object)
 		(*scene)->SetFirstUpdate(true);
 }
 
+RayEngine::EventSystem* RayEngine::SceneManager::GetEventSystem(size_t id)
+{
+	auto it = GetScene(id);
+	if (it == scenes.end())
+		return nullptr;
+
+	return (*it)->GetEventSystem();
+}
+
 size_t RayEngine::SceneManager::GetSceneID(const string& name)
 {
 	auto it = GetScene(name);
@@ -151,7 +160,7 @@ string_view RayEngine::SceneManager::GetSceneName(size_t id)
 	return (*it)->Name();
 }
 
-RayEngine::EventSystem& RayEngine::SceneManager::GetCurrentSceneEventSystem()
+RayEngine::EventSystem* RayEngine::SceneManager::GetCurrentSceneEventSystem()
 {
 	return currentScene->GetEventSystem();
 }

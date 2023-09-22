@@ -175,7 +175,8 @@ int RayEngine::Keyboard::RepeatingKey()
     if (repeatCharGot || repeatKeyGot) return repeatingKey;
     if (!validKeyRepeating) return 0;
     repeatingKey = lastKeyPressed;
-    repeatKeyGot = true;    
+    repeatKeyGot = true;
+    return 0;
 }
 
 char RayEngine::Keyboard::RepeatingChar()

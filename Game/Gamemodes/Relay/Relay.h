@@ -20,7 +20,7 @@ public:
 	float timer = 0;
 	int tilesPressed = 0;
 	int totalTiles = 0;
-	bool  showRefresh = false;
+	bool showRefresh = false;
 	float refreshTimer = 0;
 	
 

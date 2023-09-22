@@ -63,7 +63,7 @@ namespace RayEngine
 		void LateDraw();
 		GameObject* AddGameObject(GameObject* gameObject);
 		void DestroyGameObject(GameObject* gameObject);
-		inline EventSystem& GetEventSystem() const { return *eventSystem; };
+		inline EventSystem* GetEventSystem() const { return eventSystem; };
 
 		void SetFirstUpdate(bool update) { firstUpdate = update; }
 		bool IsFirstUpdate() const { return firstUpdate; }

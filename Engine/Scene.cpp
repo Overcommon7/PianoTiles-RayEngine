@@ -9,24 +9,26 @@ RayEngine::Scene::Scene(const string& name, size_t capacity)
 	: name(name), id(Random(ULLONG_MAX - 1)), firstUpdate(true)
 {
 	objects.reserve(capacity);
-	eventSystem = new EventSystem();
+	eventSystem = new EventSystem(id);
 }
 
 void RayEngine::Scene::Unload()
 {
 	eventSystem->OnSceneUnloaded();
 
+	delete eventSystem;
+	eventSystem = nullptr;
+
 	for (auto object : objects)
 	{
 		delete object;
 	}
 		
-
 	objects.clear();
 	if (objects.capacity() < 300)
 		objects.reserve(300);
 
-	eventSystem->OnSceneUnloaded();
+	
 }
 
 
@@ -41,6 +43,8 @@ void RayEngine::Scene::Update()
 		firstUpdate = false;
 	}
 		
+	if (!eventSystem)
+		eventSystem = new EventSystem(id);
 
 	eventSystem->Update();
 
@@ -123,7 +127,6 @@ void RayEngine::Scene::DestroyGameObject(GameObject* gameObject)
 	if (SceneManager::IsCurrentScene(this))
 	{
 		if (find(destoryQueries.begin(), destoryQueries.end(), gameObject) != destoryQueries.end()) return;
-
 		destoryQueries.push_back(gameObject);
 	}	
 	else
@@ -140,11 +143,14 @@ void RayEngine::Scene::DestroyGameObject(GameObject* gameObject)
 
 RayEngine::Scene::~Scene()
 {
+	delete eventSystem;
+	eventSystem = nullptr;
+
 	for (auto object : objects)
 		delete object;
 
 	objects.clear();
 	objects.shrink_to_fit();
 
-	delete eventSystem;
+	
 }		

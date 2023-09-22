@@ -17,7 +17,7 @@ namespace RayEngine
         static size_t CurrentSceneID();
         static string_view GetSceneName(size_t id);
         static bool IsCurrentScene(Scene const* scene) { return currentScene != nullptr && scene == currentScene; }
-        static EventSystem& GetCurrentSceneEventSystem();
+        static EventSystem* GetCurrentSceneEventSystem();
         static void PauseScene(size_t id = ULLONG_MAX);
 
         template<class ComponentType>
@@ -49,6 +49,7 @@ namespace RayEngine
         static void Shutdown();
 
         static void SetPriority(GameObject* object);
+        static EventSystem* GetEventSystem(size_t id);
 
     private:
         static vector<Scene*>::iterator GetScene(const string& name);

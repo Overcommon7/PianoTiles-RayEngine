@@ -12,7 +12,7 @@ namespace RayEngine
 		GameObject* HoveredGameObject();
 
 		const vector<Selectable*>& RaycastAll();
-		static EventSystem& Get();
+		static EventSystem* Get(size_t id = ULLONG_MAX);
 
 #ifdef ENGINEDLL 
 	public:
@@ -24,12 +24,24 @@ namespace RayEngine
 		void Update();
 		void OnSceneUnloaded();
 
+		~EventSystem()
+		{
+			currentSelectedGameObject = nullptr;
+			currentHoveredGameObject = nullptr;
+			lastHoveredGameObject = nullptr;
+		}
+
+		EventSystem(size_t sceneID) : sceneID(sceneID) {}
+
 	private:
-		Selectable* currentSelectedGameObject;
-		Selectable* currentHoveredGameObject;
-		Selectable* lastHoveredGameObject;
+		Selectable* currentSelectedGameObject = nullptr;
+		Selectable* currentHoveredGameObject = nullptr;
+		Selectable* lastHoveredGameObject = nullptr;
 
 		vector<Selectable*> raycastTargets = {};
+		const size_t sceneID;
+
+
 	};
 }
 

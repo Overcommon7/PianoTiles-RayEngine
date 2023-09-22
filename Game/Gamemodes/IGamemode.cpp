@@ -37,7 +37,7 @@ void IGamemode::OnUpdate()
 	}
 
 	if (!Mouse::IsLeftClicked() && !Mouse::IsRightClicked()) return;
-	if (EventSystem::Get().HoveredGameObject() != nullptr) return;
+	if (EventSystem::Get()->HoveredGameObject() != nullptr) return;
 	for (auto tile : tiles)
 	{
 		if (tile.get()->Collider()->IsColliding(Mouse::Position()))

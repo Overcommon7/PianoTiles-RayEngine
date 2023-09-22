@@ -23,10 +23,13 @@ RayEngine::Selectable::Selectable(RayEngine::GameObject* gameObject, const strin
 
 RayEngine::Selectable::~Selectable()
 {
+	auto eventSystem = EventSystem::Get(gameObject->SceneID());
+	if (!eventSystem) return;
+
 	if (isSelected)
-		EventSystem::Get().Select(nullptr);
+		eventSystem->Select(nullptr);
 	if (isHovered)
-		EventSystem::Get().Hover(nullptr);
+		eventSystem->Hover(nullptr);
 }
 
 void RayEngine::Selectable::SetSelected(bool selected)
@@ -94,7 +97,9 @@ void RayEngine::Selectable::Update()
 
 	if (internalHover)
 	{
-		EventSystem::Get().Hover(this);
+		auto eventSystem = EventSystem::Get();
+		if (eventSystem)
+			eventSystem->Hover(this);
 	}
 }
 
